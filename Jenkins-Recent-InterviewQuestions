@@ -1,0 +1,45 @@
+•	What is an Agent Directive in Jenkins?
+•	
+Explain to me the process for moving or copying Jenkins from one server to another? – 
+•	What can you do for creating a backup and copying of files in Jenkins?
+•	
+•	  > take back of Jenkins serer-> store it in AWS s3 bucket  copy from s3 bucket to a new Jenkins server
+
+•	What is a custom build? – parameterized build(job)
+•	
+For a core plugin, how can you deploy a custom build?
+•	If in a pipeline, one job works well, but the other fails, what would be your next step? Skip the failed job and continue to run other job
+•	
+•	How to configure Third-party tools in Jenkins? – global tool configuration
+•	
+•	Explain and List some default environmental variables in Jenkins.
+•	
+•	What can you do for the broken build in the Jenkins project?
+•	What security measures are use to secure Jenkins?
+
+•	How can you trigger a build using the git repository?
+WebHooks, poll SCM
+
+•	
+•	Differentiate between a Jenkinsfile and a script in a Jenkins job?
+•	
+•	Explain how to parameterize a Jenkins build?
+•	
+•	Describe the process to create a backup and copy files in Jenkins?
+•	DSL Jenkins 
+•	https://github.com/Sonal0409/jenkinsdsl/tree/master/dslscripts
+•	
+•	creating Multibranch Pipeline in Jenkins?
+•	
+•	How to secure Jenkins
+•	Explain Agent
+•	Jenkins User Content Service
+•	Jenkins remote API
+•	Artifact Archives
+•	How is information shared between different build stages in Jenkins
+•	creating a shared library in Jenkins
+
+
+Find More interview question on these sites:
+
+Turing.com, guru99.com, hackr.io, interviewkickstart.com
