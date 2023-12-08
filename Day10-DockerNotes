@@ -1,3 +1,4 @@
+
 Dockerfile:
 =========================
 
@@ -150,3 +151,256 @@ We will create dockerfile--> build it into an image for following requirements:
 3. Container should have index.html file copied in nginx director /var/www/html
 4. Container should be exposed to port 80
 5. Container once launched and is UP , then execute a command to start nginx server
+
+vim dockerfile
+
+# to write comment => This is our first dockerfile
+
+FROM ubuntu
+LABEL maintainer="Edureka"
+RUN apt-get update
+RUN apt-get install git -y
+RUN apt-get install nginx -y
+COPY index.html /var/www/html/
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+
+vim index.html
+
+
+<h1> This file is from Docker </h1>
+<h1> Created by Sonal Mittal </h1>
+
+=========================
+
+In the Jenkisn session, we have continous integration of the code given by edureka
+
+As part of that job, we generated war file 
+
+the file is currenly present at the location in my VM:
+
+/var/lib/jenkins/workspace/PackageCode/target/addressbook.war
+
+Now these are stpes that we want to perform:
+=============================
+
+1. Create a pipeline to clone the code repo and build the code
+3. Use the linux command to COPY the package in the workspace directory
+4. We will write a dockerfile to deploy the .war file on tomcat server
+		base should be tomcat:9
+		copy the code
+		expose to 8080
+		CMD to start tomcat service
+5. build the dockerfile
+6. run the Image to create container
+
+
+pipeline{
+    
+    tools{
+        maven 'mymaven'
+    }
+    agent any // execute pipeline on current node
+
+    stages{
+        
+        stage('clone the repo')
+        {
+            steps{
+            git 'https://github.com/Sonal0409/DevOpsCodeDemo.git'
+            }
+        }
+        stage('build the code')
+        {
+            steps{
+                sh 'mvn package'
+            }
+        }
+        stage('Build Image')
+        {
+            steps{
+                sh 'cp /var/lib/jenkins/workspace/CI_CDPipeline/target/addressbook.war .'
+                sh 'docker build -t myimagejenkins .'
+            }
+        }
+        
+        stage('deploy app')
+        {
+            steps{
+                docker run -d -P myimagejenkins
+            }
+        }
+        
+    }
+    
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
