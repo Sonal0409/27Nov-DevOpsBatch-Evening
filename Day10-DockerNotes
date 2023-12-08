@@ -1,0 +1,152 @@
+Dockerfile:
+=========================
+
+1. Any image in docker is build form dockerfile
+
+Dockerfile --> Image ---> Container
+
+2. Dockerfile is a text document that contains all the commands/arguments required to build the image
+
+3. A dockerfile structure is :
+ 
+   keyword commands/arguments
+
+4. Docker file is not written using any programming/scripting language. It just has key value
+
+
+The various keywords used in Dockerfile:
+=================================
+
+1. FROM keyword
+===========================
+
+In a dockerfile first keyword will always be FROM.
+This keyword will only come once in the begining. We dont repeat this
+
+Purpose:
+========
+Any custom Images or docker hub images are always based upon a Docker Official Base Image
+
+You dont build an image form scratch
+
+Only docker developers use an Image with name as Scratch for OS images
+
+Example:
+
+FROM ubuntu
+
+2. RUN keyword
+=========================
+
+> This is most commonly used keyword
+> This can be repeated several times in the dockerfile
+> This keyword specifies 
+	> the set of  Linux commands to be executed on the container when it is launched using your cutome image
+  	> Linux command to install packages, upgrade or delete packages on the container
+  	> create directory, users groups
+
+3. COPY keyword
+========================
+
+> this keyword is used:
+  	> when we have copy any type of file from host mahcine to containers directory
+	> This keyword cannot copy .tar files (archive file)
+
+
+4. ADD keyword
+=========================
+> this keyword is used:
+  	> when we have copy any type of file from host mahcine to containers directory
+	> It can also copy .tar files (archive file)
+ 	> this keyword will extract the archive files and copy the files on the container directory
+	> this will done when container is launched using custom image
+
+5. CMD keyword
+==========================
+
+With this keyowrd:
+  > we give a set of commands/arguments whicha re executed once container is launched/running
+  > this command should continue to run
+  > Command which are used to start an application, to start a server or to run script once container is launched
+
+6. ENV keyword
+===========================
+Suppose in the dockerfile, you want to defined a variable and value to it -> use keyword ENV
+You cna then call variable further inyour dockerfile
+
+Example:
+
+ENV NGINX_VERSION   1.25.3
+
+refer to the varaible in the dockerfile
+
+${NGINX_VERSION}
+
+
+7. EXPOSE keyword
+==============================
+
+Using this keyword you can specify the port number of the container
+
+Example:
+
+EXPOSE 80
+
+8. Volume keyword
+===========================
+
+Using this keyword we can specify the directory that will preserve the data of the container on the hostmachine
+
+example:
+
+VOLUME /var/lib/mysql
+
+On the hostmachine the data is preserved in the location : /var/lib/docker/volumes
+
+9. WORKDIR keyword
+============================
+Using this keyword we can specify the creation of a directory on the container.
+Once the directory is created, all the next instruction will be executed in this work directory
+
+10. LABEL keyword
+========================
+
+Provide the author details of the dockerfile
+
+Example:
+LABEL maintainer="NGINX Docker Maintainers <docker-maint@nginx.com>"
+
+
+=================================
+
+ALl the keywords are used in dockerfile
+
+he name of the file is always dockerfile or DockerfileT
+
+The command to build dockerfile into an Image:
+==========================
+
+You will execute the command in the directory where the dockerfile is. otherwise the command will not be able to find the dockfile and it will fail
+
+#  docker build -t imagename:tagname .
+
+here:
+
+-t = tag the image with a unique name.
+Image name will not have upper case alphabet, no specialcharacter
+It can have alphabets & numbers
+
+. = In the command . means search for dockerfile in the current directory
+
+ you can also say it is path of the dockerfile
+
+=========================================
+
+We will create dockerfile--> build it into an image for following requirements:
+===============================
+
+1. Container should have Ubuntu OS
+2. Container should come pre-installed with nginx and git
+3. Container should have index.html file copied in nginx director /var/www/html
+4. Container should be exposed to port 80
+5. Container once launched and is UP , then execute a command to start nginx server
