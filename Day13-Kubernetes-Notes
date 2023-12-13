@@ -1,0 +1,49 @@
+Connect to the lab or GKE and execute below YAMls:
+================================
+Multi container POD
+
+kind: Pod
+apiVersion: v1
+metadata:
+ name: multi-pod-2
+ labels: # lables are used to group similar objects
+  author: sonal
+  app: nginx
+spec:
+ containers:
+  - name: c1
+    image: nginx
+  - name: c2
+    image: tomcat
+  - name: c3
+    image: ubuntu
+    command: ["bash", "-c", "sleep 6000"]
+
+==================================
+# kubectl create -f <filename.yml>
+
+# kubectl get pods
+======================================
+Deployment Object - example 1
+
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+ name: deploy1
+spec:
+ replicas: 5
+ selector:
+  matchLabels:
+   type: webserver
+ template: #This section is pod template that replicaset uses to create pods
+  metadata:
+   labels:
+    type: webserver
+  spec:
+   containers:
+    - name: app
+      image: leaddevops/kubeserve:v1
+============================================
+# kubectl create -f <filename.yml>
+
+# kubectl get all
