@@ -1,0 +1,106 @@
+In kubernetes the code is written in YAML
+
+YAML : YAML aint a Markup language
+
+The files in which we will write kubernetes code are called as Object definition file or Manifest files
+
+These files will have extensions as .yml or .YAML
+
+Yaml is not a programming language, it is not a scripting langauge
+
+It is just a method of saving data in a file.
+It is like JSON or XML.
+
+How do we save data in YAML:
+
+Syntax-
+
+key: value
+
+key is genrally provided to you by the tool
+value is given by user or by tool
+Indentation is important in YAML
+YAML is declarative in nature.
+
+We can save any kind of data like String, Integer, decimal value, date, boolean, alphanumerical value
+Yaml file can start with --- and end with ... , however they are not mandatory to be use din YAML file
+We cna validaye YAMl code written by us using YAML linit which is available online
+
+
+Example 1: YAML code saving single value:
+
+---
+company: Edureka
+Training: Devops
+Trainer: Sonal Mittal
+Timings: 8.30PM
+Days: Weekdays
+Hours: 36
+...
+
+Example 2: YAML code saving multiple values or list of values
+
+---
+company: Edureka
+Trainings: 
+  - Devops
+  - AWS
+  - Azure
+  - GCP
+Trainer: 
+  - Sonal Mittal
+  - Ravi
+  - Preeti
+  - Jack
+Timings: ["8.30PM","7.00AM","8.00AM:]
+Days: 
+  - Weekdays
+  - weekends
+Hours: 36
+
+example: saving the data as maps[set of key and value] in YAML
+
+
+company: Edureka
+Trainings: 
+  - Devops
+  - AWS
+  - Azure
+  - GCP
+Trainer: 
+  - name: Sonal Mittal
+    email: sonal@gmail.com
+    phone: 434435345
+  - name: Ravi
+    email: ravi@gmail.com
+    phone: 13124324234
+  - name: Preeti
+    email: r343ri@gmail.com
+    phone: 13124324234
+  - name: Jack
+    email: sdgfd@gmail.com
+    phone: 13124324234
+Timings: ["8.30PM","7.00AM","8.00AM:]
+Days: 
+  - Weekdays
+  - weekends
+Hours: 36
+
+==================================
+
+The 4 main section in kubernetes YAML file
+
+kind: here we will give name of object that we ahve to create
+
+apiVersion: this is a schema theat K8s will use to create above object
+
+metadata: herr we give name and labels to the pods
+
+spec: This is the most importat section of the file
+Here we write the 
+ - containerName
+ - image
+ - volume
+ - resources
+
+=====================================
